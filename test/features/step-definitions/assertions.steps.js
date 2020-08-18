@@ -8,8 +8,5 @@ Then(/^I should see a flash message saying (.*)$/, (message) => {
 });
 
 Then(/^I should see the (.*) page$/, (page) => {
-  browser.waitUntil(() => {
-    let url = browser.getUrl();
-    return url === (`https://demo.dotcms.com/dotAdmin/#/c${routes[page][page]}`);
-  });
+  browser.waitUntil(() =>  browser.getUrl() === (`${routes.baseURL}${routes.admin}${routes[page][page]}`));
 });

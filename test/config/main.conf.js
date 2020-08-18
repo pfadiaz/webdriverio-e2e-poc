@@ -1,6 +1,6 @@
 const { generate } = require("multiple-cucumber-html-reporter");
 const { removeSync } = require("fs-extra");
-let firstScenario = true;
+let firstScenario;
 
 exports.config = {
   // ==================
@@ -104,11 +104,9 @@ exports.config = {
    * Runs before a Cucumber scenario
    */
   beforeScenario() {
-    if (firstScenario) {
-      firstScenario = false;
-    } else {
-      browser.deleteAllCookies();
-      browser.refresh();
+    if (!firstScenario) {
+        browser.reloadSession();
     }
+    firstScenario = false;
   },
 };

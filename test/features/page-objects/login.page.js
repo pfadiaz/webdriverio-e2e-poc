@@ -26,7 +26,9 @@ class LoginPage extends Page {
    * e.g. to login using username and password
    */
   login(username, password) {
+    this.inputUsername.waitForDisplayed();
     this.inputUsername.setValue(username);
+    this.inputPassword.waitForDisplayed();
     this.inputPassword.setValue(password);
     this.btnSignIn.click();
   }

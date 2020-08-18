@@ -18,12 +18,14 @@ Then(/^I navigate to the (.*) page$/, function (page) {
 
 Then(/^I open the first image$/, function () {
   this.currentPage.iFrameMainImages.waitForExist();
+  this.currentPage.iFrameMainImages.waitForEnabled();
   browser.switchToFrame(this.currentPage.iFrameMainImages);
   browser.waitUntil(() => {
     browser.switchToFrame(this.currentPage.iFrameMainImages);
     let loaded = this.currentPage.iFrameMainImages.getHTML("input");
     return loaded !== null;
   });
+  this.currentPage.linkImage.waitForExist();
   this.currentPage.linkImage.click();
 });
 
